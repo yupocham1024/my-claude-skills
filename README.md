@@ -9,6 +9,7 @@
 | [`five-minds`](five-minds/) | 「戦略家・設計者・生成者・破壊者・仕上げ屋」の独立した 5 役割を順に実行し、単発生成より大幅に質の高い成果物を作るワークフロー。明示的に呼び出した時だけ発火する。 |
 | [`level-aware-explainer`](level-aware-explainer/) | ユーザーの既知範囲を基準に、それを超える専門用語・概念にだけその場で平易な注釈を添える。技術・数学の説明で自動発火。 |
 | [`prompt-improver`](prompt-improver/) | 曖昧・主観的・情報不足なプロンプトを、より具体的で客観的な形に書き換えてから作業を進める。新しい依頼のたびに点検する。 |
+| [`stop-ai-slop-jp`](stop-ai-slop-jp/) | AI で書いた日本語から「AI 臭」を取り除き、人間が書いた文章に戻す。全角ダッシュや偏愛語だけでなく、主体の不在・命題型 H2・両論併記なども直す。[iKora128/stop-ai-slop-jp](https://github.com/iKora128/stop-ai-slop-jp) を取り込んだもの（MIT）。 |
 
 各スキルの詳しい説明・注意点は、それぞれのフォルダ内の `README.md` を参照。
 
@@ -20,7 +21,7 @@
 
 ```bash
 # 全スキルをまとめて導入
-cp -r five-minds level-aware-explainer prompt-improver ~/.claude/skills/
+cp -r five-minds level-aware-explainer prompt-improver stop-ai-slop-jp ~/.claude/skills/
 ```
 
 個別に入れたい場合は、フォルダ名を指定する。
@@ -60,9 +61,15 @@ my-claude-skills/
 ├── level-aware-explainer/
 │   ├── SKILL.md
 │   └── README.md
-└── prompt-improver/
+├── prompt-improver/
+│   ├── SKILL.md
+│   └── README.md
+└── stop-ai-slop-jp/          ← 外部リポジトリを取り込んだスキル(MIT)
     ├── SKILL.md
-    └── README.md
+    ├── references/           # SKILL.md から参照する補助ドキュメント
+    ├── README.md
+    ├── README.en.md
+    └── LICENSE
 ```
 
 1 フォルダ = 1 スキルなので、フォルダをそのまま `~/.claude/skills/` にコピー、または zip 化して claude.ai にアップロードすれば導入できる。
